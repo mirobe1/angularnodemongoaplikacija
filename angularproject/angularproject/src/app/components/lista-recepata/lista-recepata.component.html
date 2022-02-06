@@ -1,0 +1,33 @@
+<div class="row">
+  <div>
+    <input type="text" id="namea" name="namea" [(ngModel)]="namea" placeholder="Type name to filter"/>
+    <input type="text" id="sastojak" name="sastojak" [(ngModel)]="sastojak" placeholder="Type ingredient to filter"/>
+    <button class="btn btn-primary" (click)="Filter()">Filter</button>
+    
+  </div>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Sastojci</th>
+      <th>Editiraj</th>
+      <th>Izbrisi</th>
+    </tr>
+    <tr *ngFor="let recipe of recepies">
+      <td>{{recipe.name}}</td>
+      <td>{{recipe.description}}</td>
+      <td>{{recipe.sastojci}}</td>
+      <td><a [routerLink]="['/dodaj', recipe._id]">Editiraj</a></td>
+      <td><a (click)="Izbrisi(recipe._id)">Izbrisi</a></td>
+    </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+    <button class="btn" *ngIf="isNotFirstPage" (click)="Pageaj('First')">First</button>
+    <button class="btn" *ngIf="isNotFirstPage" (click)="Pageaj('Prev')">{{pager.currentPage - 1}}</button>
+    <button class="btn btn-primary" *ngIf="hasData">{{pager.currentPage}}</button>
+    <button class="btn" *ngIf="isNotLastPage" (click)="Pageaj('Next')">{{pager.nextPage}}</button>
+    <button class="btn" *ngIf="isNotLastPage" (click)="Pageaj('Last')">Last</button>
+  </div>
+  </div>

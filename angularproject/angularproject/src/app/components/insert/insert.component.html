@@ -1,0 +1,16 @@
+<form #formaDodavanja="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="recipe.name" placeholder="Name required">     
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Description</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="recipe.description" placeholder="Description of recipe" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Description</label>
+        <input type="text" class="form-control" id="sastojci" name="sastojci" [(ngModel)]="recipe.sastojci" placeholder="Sastojci" required>
+        <small id="emailHelp" class="form-text text-muted">Napisite listu sastojaka odvojenih zarezom.</small>
+      </div>
+    <button type="submit" [disabled]="!formaDodavanja.valid" class="btn btn-primary">Dodaj</button>
+  </form>
